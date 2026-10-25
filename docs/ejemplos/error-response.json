@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-10-22T15:30:00Z",
+  "status": 400,
+  "codigo": "VAL-001",
+  "mensaje": "El monto debe ser mayor que cero",
+  "path": "/api/v1/transacciones",
+  "traceId": "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+}

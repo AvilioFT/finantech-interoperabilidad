@@ -1,0 +1,22 @@
+{
+  "status": 200,
+  "total": 2,
+  "mensajes": [
+    {
+      "from": "noreply@finantech.local",
+      "to": [
+        "remitente.exit@finantech.com"
+      ],
+      "subject": "[FINANTECH] Transaccion confirmada",
+      "body": "OK. 001-1234567890->002-0987654321 1500.00 Prueba .NET -> Java"
+    },
+    {
+      "from": "noreply@finantech.local",
+      "to": [
+        "alertas@finantech.com"
+      ],
+      "subject": "[ALERTA FINANTECH] Transaccion fallida",
+      "body": "ID=TX-2026-000252 Cuenta=001-1234567890->002-0987654321 Monto=0 Concepto=Prueba de alerta"
+    }
+  ]
+}

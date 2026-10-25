@@ -1,0 +1,11 @@
+{
+  "status": 401,
+  "body": {
+    "timestamp": "2026-10-25T02:36:14.160737502Z",
+    "status": 401,
+    "codigo": "AUTH-001",
+    "mensaje": "No autorizado",
+    "path": "/api/v1/transacciones",
+    "traceId": "f1722410-c491-45e7-a8d7-ca6b106d94b1"
+  }
+}

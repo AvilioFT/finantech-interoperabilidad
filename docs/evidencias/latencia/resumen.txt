@@ -1,0 +1,9 @@
+Iteraciones: 200
+Calentamiento: 50
+Promedio: 13.95 ms
+Min: 8.0 ms
+Max: 28.59 ms
+p50: 13.13 ms
+p95: 20.63 ms
+p99: 25.35 ms
+Condiciones: localhost, JDK 21, Spring Boot 3.5.16, H2, HTTP sin TLS, pool de correo 2-4 hilos

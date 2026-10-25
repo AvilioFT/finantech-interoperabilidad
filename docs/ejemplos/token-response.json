@@ -1,0 +1,5 @@
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmaW5hbnRlY2gtamF2YSIsInN1YiI6ImNsaWVudGUiLCJyb2xlcyI6WyJST0xFX0NMSUVOVEUiXSwiaWF0IjoxNzk3MDAwMDAwLCJleHAiOjE3OTcwMDA5MDB9.firma-demo",
+  "tokenType": "Bearer",
+  "expiresInSeconds": 900
+}

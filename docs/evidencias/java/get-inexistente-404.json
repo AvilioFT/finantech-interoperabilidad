@@ -1,0 +1,11 @@
+{
+  "status": 404,
+  "body": {
+    "timestamp": "2026-10-25T02:36:14.218383165Z",
+    "status": 404,
+    "codigo": "NOT-001",
+    "mensaje": "Transaccion no encontrada",
+    "path": "/api/v1/transacciones/TX-9999-999999",
+    "traceId": "60ca92ac-02ce-4173-b6af-8de081a0219f"
+  }
+}

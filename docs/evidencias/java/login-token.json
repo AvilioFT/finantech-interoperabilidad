@@ -1,0 +1,7 @@
+{
+  "status": 200,
+  "accessToken": "<omitido en la evidencia>",
+  "tokenType": "Bearer",
+  "expiresInSeconds": 3600,
+  "longitudToken": 133
+}

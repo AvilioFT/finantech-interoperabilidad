@@ -1,0 +1,11 @@
+{
+  "status": 401,
+  "body": {
+    "timestamp": "2026-10-25T02:36:14.151447310Z",
+    "status": 401,
+    "codigo": "AUTH-001",
+    "mensaje": "Credenciales invalidas",
+    "path": "/api/v1/auth/token",
+    "traceId": "b5d9aed4-aa8a-48ec-bfb7-25c6b5de61bf"
+  }
+}

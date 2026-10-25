@@ -1,0 +1,60 @@
+{
+  "tokenValido": {
+    "status": 200,
+    "body": {
+      "idTransaccion": "TX-2026-000001",
+      "cuentaOrigen": "001-1234567890",
+      "cuentaDestino": "002-0987654321",
+      "monto": 1500.0,
+      "moneda": "PEN",
+      "estado": "APROBADA",
+      "fechaHora": "2026-10-25T02:39:35.684058438Z",
+      "mensaje": "Transaccion procesada"
+    }
+  },
+  "tokenFirmaInvalida": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-25T02:39:35.700898545Z",
+      "status": 401,
+      "codigo": "AUTH-001",
+      "mensaje": "No autorizado",
+      "path": "/api/v1/transacciones/TX-2026-000001",
+      "traceId": "c9fa5a93-0d8b-4cb0-8ed5-a28eee82b79d"
+    }
+  },
+  "tokenExpirado": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-25T02:39:35.711912826Z",
+      "status": 401,
+      "codigo": "AUTH-001",
+      "mensaje": "No autorizado",
+      "path": "/api/v1/transacciones/TX-2026-000001",
+      "traceId": "0e26de01-050c-4f03-8e02-514971292158"
+    }
+  },
+  "sinToken": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-25T02:39:35.714407267Z",
+      "status": 401,
+      "codigo": "AUTH-001",
+      "mensaje": "No autorizado",
+      "path": "/api/v1/transacciones/TX-2026-000001",
+      "traceId": "d64e6f1d-6dca-4753-9caf-80e10835f2ab"
+    }
+  },
+  "tokenSinScope": {
+    "ejecutado": false,
+    "nota": "La demo no modela scopes; en produccion se valida el claim scope con RS256/JWKS."
+  },
+  "tls": {
+    "ejecutado": false,
+    "nota": "La demo usa HTTP local; HTTPS/TLS 1.3 se documenta como configuracion de produccion."
+  },
+  "rateLimiting": {
+    "ejecutado": false,
+    "nota": "No implementado en la demo; recomendado en el API Gateway."
+  }
+}

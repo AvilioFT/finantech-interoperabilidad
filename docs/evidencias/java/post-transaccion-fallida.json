@@ -1,0 +1,13 @@
+{
+  "status": 201,
+  "body": {
+    "idTransaccion": "TX-2026-000002",
+    "cuentaOrigen": "001-1234567890",
+    "cuentaDestino": "002-0987654321",
+    "monto": 0,
+    "moneda": "PEN",
+    "estado": "FALLIDA",
+    "fechaHora": "2026-10-25T02:36:14.234194043Z",
+    "mensaje": "Transaccion fallida: el monto debe ser mayor que cero"
+  }
+}

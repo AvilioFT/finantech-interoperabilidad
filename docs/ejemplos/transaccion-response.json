@@ -1,0 +1,10 @@
+{
+  "idTransaccion": "TX-2026-000001",
+  "cuentaOrigen": "001-1234567890",
+  "cuentaDestino": "002-0987654321",
+  "monto": 1500.00,
+  "moneda": "PEN",
+  "estado": "APROBADA",
+  "fechaHora": "2026-10-22T15:30:00Z",
+  "mensaje": "Transacción procesada"
+}

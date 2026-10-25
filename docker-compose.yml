@@ -1,0 +1,22 @@
+services:
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: finantech-mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  postgres:
+    image: postgres:16
+    container_name: finantech-postgres
+    environment:
+      POSTGRES_DB: finantech
+      POSTGRES_USER: finantech
+      POSTGRES_PASSWORD: finantech
+    ports:
+      - "5432:5432"
+    volumes:
+      - finantech_pgdata:/var/lib/postgresql/data
+
+volumes:
+  finantech_pgdata:

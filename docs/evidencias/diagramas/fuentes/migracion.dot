@@ -1,0 +1,32 @@
+digraph M {
+  graph [
+    rankdir=LR,
+    bgcolor="#F8FAFC",
+    fontname="DejaVu Sans",
+    fontsize=14,
+    labelloc=t,
+    label=<<B>Migración gradual con Strangler Fig</B> <FONT POINT-SIZE="9.5" COLOR="#475569">- sin interrumpir las 50 000 operaciones diarias</FONT>>,
+    pad=0.14,
+    nodesep=0.22,
+    ranksep=0.26
+  ];
+  node [
+    shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=9.5,
+    margin="0.10,0.06", penwidth=1.2, color="#93C5FD", fillcolor="#EFF6FF", fontcolor="#0F172A"
+  ];
+  edge [color="#3B82F6", arrowsize=0.55, penwidth=1.3];
+
+  F0 [label=<<B>Fase 0</B><BR/>Descubrimiento>];
+  F1 [label=<<B>Fase 1</B><BR/>Gateway + JWT>];
+  F2 [label=<<B>Fase 2</B><BR/>Fachada Strangler>];
+  F3 [label=<<B>Fase 3</B><BR/>Piloto .NET>];
+  F4 [label=<<B>Fase 4</B><BR/>Canary 5 → 100 %>, fillcolor="#DCFCE7", color="#16A34A"];
+  F5 [label=<<B>Fase 5</B><BR/>Apagar legacy>, fillcolor="#F3E8FF", color="#9333EA"];
+
+  F0 -> F1 -> F2 -> F3 -> F4 -> F5;
+
+  nota [shape=note, style="filled", fillcolor="#FEF3C7", color="#D97706", fontsize=8,
+        label=<<B>Rollback automático</B><BR/>error &gt; 1 % o p95 &gt; 250 ms>];
+  { rank=same; F4; nota; }
+  F4 -> nota [style=dashed, color="#D97706", arrowhead=none];
+}

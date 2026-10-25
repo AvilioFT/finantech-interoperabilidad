@@ -1,0 +1,11 @@
+=== FinanTech S.A. - Cliente .NET ===
+Java: http://localhost:8080
+WCF : http://localhost:8081/TransaccionService.svc
+[Java] JWT obtenido (133 caracteres)
+[Java] POST /api/v1/transacciones -> 201 en 9 ms
+{"idTransaccion":"TX-2026-000251","cuentaOrigen":"001-1234567890","cuentaDestino":"002-0987654321","monto":1500.00,"moneda":"PEN","estado":"APROBADA","fechaHora":"2026-10-25T04:52:46.677890123Z","mensaje":"Transaccion procesada"}
+[Java] GET /api/v1/transacciones/TX-2026-000251 -> 200
+{"idTransaccion":"TX-2026-000251","cuentaOrigen":"001-1234567890","cuentaDestino":"002-0987654321","monto":1500.00,"moneda":"PEN","estado":"APROBADA","fechaHora":"2026-10-25T04:52:46.677890123Z","mensaje":"Transaccion procesada"}
+[WCF] TX-20261025045246-51e31a18f1c8435090ce96dd8126ed99 | APROBADA | Transaccion procesada
+[WCF] Consulta: TX-20261025045246-51e31a18f1c8435090ce96dd8126ed99 | APROBADA
+=== Fin ===

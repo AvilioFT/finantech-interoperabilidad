@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+spring:
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}
+    properties:
+      mail.smtp.auth: false
+      mail.smtp.starttls.enable: false
+  h2:
+    console:
+      # Deshabilitada por defecto: solo se habilita en local con H2_CONSOLE_ENABLED=true
+      enabled: ${H2_CONSOLE_ENABLED:false}
+  datasource:
+    url: jdbc:h2:mem:finantech;DB_CLOSE_DELAY=-1;MODE=MySQL
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+  task:
+    execution:
+      thread-name-prefix: finantech-async-
+      pool:
+        core-size: 2
+        max-size: 4
+        queue-capacity: 500
+
+jwt:
+  secret: ${JWT_SECRET:ZWNvcnQtc2VjcmV0LWtleS1mb3Itand0LXNpZ25pbmctbXVzdC1iZS1sb25n}
+  expiration-ms: 3600000
+
+app:
+  auth:
+    demo:
+      username: ${DEMO_USER:cliente}
+      password: ${DEMO_PASSWORD:Clave123!}
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}
+    from: ${MAIL_FROM:noreply@finantech.local}
+
+logging:
+  level:
+    com.finantech: DEBUG

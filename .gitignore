@@ -1,0 +1,48 @@
+# Java / Maven
+java-service/target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.vscode/
+TestResults/
+*.nupkg
+
+# Secretos y certificados
+.env
+.env.*
+*.pfx
+*.p12
+*.key
+*.pem
+secrets/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+
+# Logs y temporales
+*.log
+logs/
+tmp/
+
+# Entregables locales y documentos binarios (no se publican en GitHub)
+PDSD-643_FORMATOALUMNOTRABAJOFINAL.docx
+PDSD-643_TRABAJOFINAL.pdf
+PDSD-643_TRABAJOFINAL.md
+*.docx
+*.pdf
+~$*.docx
+
+# Documentación local: solo README.md y AGENTS.md se publican
+SECURITY.md
+docs/**/*.md

@@ -1,0 +1,8 @@
+{
+  "idTransaccion": "TX-2026-000001",
+  "cuentaOrigen": "001-1234567890",
+  "cuentaDestino": "002-0987654321",
+  "monto": 1500.00,
+  "moneda": "PEN",
+  "descripcion": "Pago de servicios"
+}
