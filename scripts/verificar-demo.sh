@@ -231,47 +231,72 @@ fi
 
 if [ "$CON_PRUEBAS" = "1" ]; then
   info "6. Pruebas y compilación"
-  if command -v mvn >/dev/null 2>&1; then
-    if (cd "$(dirname "$0")/.." && mvn -B -q -f java-service/pom.xml test > "$TMP/mvn.log" 2>&1); then
+
+  MVN_CMD="${MVN_BIN:-}"
+  if [ -z "$MVN_CMD" ] && command -v mvn >/dev/null 2>&1; then
+    MVN_CMD="$(command -v mvn)"
+  fi
+  if [ -z "$MVN_CMD" ] && [ -n "${MAVEN_HOME:-}" ] && [ -x "$MAVEN_HOME/bin/mvn" ]; then
+    MVN_CMD="$MAVEN_HOME/bin/mvn"
+  fi
+
+  if [ -n "$MVN_CMD" ]; then
+    if (cd "$(dirname "$0")/.." && "$MVN_CMD" -B -q -f java-service/pom.xml test > "$TMP/mvn.log" 2>&1); then
       ok "mvn test (4 pruebas) superado"
     else
       ko "mvn test falló; revisa $TMP/mvn.log"
       tail -20 "$TMP/mvn.log"
     fi
   else
-    echo "  [OMITIDO] mvn no está en PATH"
+    echo "  [OMITIDO] mvn no está en PATH (define MVN_BIN=/ruta/al/mvn)"
   fi
 
-  if command -v dotnet >/dev/null 2>&1; then
-    if (cd "$(dirname "$0")/.." && dotnet build dotnet/FinanTech.Client/FinanTech.Client.csproj -v q --nologo > "$TMP/dotnet.log" 2>&1); then
+  DOTNET_CMD="${DOTNET_BIN:-}"
+  if [ -z "$DOTNET_CMD" ] && command -v dotnet >/dev/null 2>&1; then
+    DOTNET_CMD="$(command -v dotnet)"
+  fi
+  if [ -z "$DOTNET_CMD" ] && [ -n "${DOTNET_ROOT:-}" ] && [ -x "$DOTNET_ROOT/dotnet" ]; then
+    DOTNET_CMD="$DOTNET_ROOT/dotnet"
+  fi
+
+  if [ -n "$DOTNET_CMD" ]; then
+    if (cd "$(dirname "$0")/.." && "$DOTNET_CMD" build dotnet/FinanTech.Client/FinanTech.Client.csproj -v q --nologo > "$TMP/dotnet.log" 2>&1); then
       ok "dotnet build del cliente y WCF superado"
     else
       ko "dotnet build falló; revisa $TMP/dotnet.log"
     fi
   else
-    echo "  [OMITIDO] dotnet no está en PATH"
+    echo "  [OMITIDO] dotnet no está en PATH (define DOTNET_BIN=/ruta/al/dotnet)"
   fi
 fi
 
 if [ "$SEGURIDAD" = "1" ]; then
   info "7. Escaneo de dependencias"
-  if command -v dotnet >/dev/null 2>&1; then
-    salida="$(cd "$(dirname "$0")/.." && dotnet list dotnet/FinanTech.WcfService.CoreWcf/FinanTech.WcfService.CoreWcf.csproj package --vulnerable --include-transitive 2>&1)"
+  DOTNET_SEC="${DOTNET_BIN:-}"
+  if [ -z "$DOTNET_SEC" ] && command -v dotnet >/dev/null 2>&1; then
+    DOTNET_SEC="$(command -v dotnet)"
+  fi
+  if [ -z "$DOTNET_SEC" ] && [ -n "${DOTNET_ROOT:-}" ] && [ -x "$DOTNET_ROOT/dotnet" ]; then
+    DOTNET_SEC="$DOTNET_ROOT/dotnet"
+  fi
+
+  if [ -n "$DOTNET_SEC" ]; then
+    salida="$(cd "$(dirname "$0")/.." && "$DOTNET_SEC" list dotnet/FinanTech.WcfService.CoreWcf/FinanTech.WcfService.CoreWcf.csproj package --vulnerable --include-transitive 2>&1)"
     if echo "$salida" | grep -qi "no tiene paquetes vulnerables"; then
       ok "NuGet: sin paquetes vulnerables en WCF"
     else
       ko "NuGet: revisar posibles paquetes vulnerables en WCF"
     fi
-    salida="$(cd "$(dirname "$0")/.." && dotnet list dotnet/FinanTech.Client/FinanTech.Client.csproj package --vulnerable --include-transitive 2>&1)"
+    salida="$(cd "$(dirname "$0")/.." && "$DOTNET_SEC" list dotnet/FinanTech.Client/FinanTech.Client.csproj package --vulnerable --include-transitive 2>&1)"
     if echo "$salida" | grep -qi "no tiene paquetes vulnerables"; then
       ok "NuGet: sin paquetes vulnerables en el cliente"
     else
       ko "NuGet: revisar posibles paquetes vulnerables en el cliente"
     fi
   else
-    echo "  [OMITIDO] dotnet no está en PATH"
+    echo "  [OMITIDO] dotnet no está en PATH (define DOTNET_BIN=/ruta/al/dotnet)"
   fi
-  echo "  [INFO] Para Java, revisa SECURITY.md: quedan 2 avisos de Spring no aplicables."
+  echo "  [INFO] Java: revisa la sección Seguridad del README (2 avisos de Spring no aplicables)."
 fi
 
 info "Resumen"

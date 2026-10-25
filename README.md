@@ -70,7 +70,23 @@ Comprueba disponibilidad, login JWT, rechazo 401, POST 201, GET 200, idempotenci
 bash scripts/verificar-demo.sh --con-pruebas --seguridad
 ```
 
-Salida esperada: `RESULTADO: SISTEMA OK` y `0` comprobaciones fallidas.
+Salida esperada: `RESULTADO: SISTEMA OK` y `0` comprobaciones fallidas. Si `mvn` o `dotnet` no están en el `PATH`, define `MVN_BIN` y `DOTNET_BIN` con la ruta absoluta a cada ejecutable para que no se omitan las pruebas.
+
+## Capturas de la demo
+
+Tomadas el 25/10/2026 con Java (8080), WCF (8081) y MailHog (8025) en localhost. Las capturas de terminal muestran la salida real de los comandos.
+
+| Verificación automática (17/17) | Cliente .NET (Java + WCF) |
+|---|---|
+| ![Verificación automática](docs/evidencias/capturas/verificacion-demo.png) | ![Cliente .NET](docs/evidencias/capturas/cliente-dotnet.png) |
+
+| Pruebas Java (4/4) | Bandeja de MailHog |
+|---|---|
+| ![mvn test](docs/evidencias/capturas/pruebas-java.png) | ![MailHog](docs/evidencias/capturas/mailhog-bandeja.png) |
+
+**WSDL publicado por WCF** con namespace `urn:finantech:transacciones:v1`:
+
+![WSDL de WCF](docs/evidencias/capturas/wsdl-wcf.png)
 
 ## Resultados de latencia
 
@@ -110,6 +126,7 @@ Condiciones: Linux x86_64, OpenJDK 21.0.13 (compilado con `--release 17`), Sprin
 - [Cliente .NET ejecutando](docs/evidencias/dotnet/cliente-ejecutando.txt)
 - [Correos en MailHog](docs/evidencias/correo/mailhog-mensajes.json)
 - [Latencia: resultado](docs/evidencias/latencia/resultado.json) · [resumen](docs/evidencias/latencia/resumen.txt) · [tiempos](docs/evidencias/latencia/tiempos.csv)
+- [Capturas de la demo](docs/evidencias/capturas/)
 - [Ejemplos JSON](docs/ejemplos/)
 
 ## Estructura del repositorio
@@ -142,9 +159,9 @@ Condiciones: Linux x86_64, OpenJDK 21.0.13 (compilado con `--release 17`), Sprin
 - [x] Pruebas, evidencias y latencia p50/p95/p99.
 - [x] Verificación automática (`scripts/verificar-demo.sh`).
 - [x] Revisión de dependencias y endurecimiento de la demo.
+- [x] Capturas de la demo (verificación, cliente .NET, pruebas, MailHog y WSDL).
 - [ ] Completar datos personales en el formato `.docx`.
 - [ ] Exportar el documento a PDF y armar el ZIP de entrega.
-- [ ] Capturas de pantalla para las evidencias.
 
 > La latencia de localhost no representa la red real. El objetivo de <200 ms se documenta como SLO y se mide con JMeter; no se deben inventar resultados.
 
